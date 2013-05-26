@@ -63,6 +63,7 @@ public:
     vector<int>::iterator number1 = numbers.begin();
     vector<int>::iterator number2 = numbers.end() - 1;
     vector<int> output;
+    
     sort(numbers, number1, number2);
     while(number1 < number2)
     {
