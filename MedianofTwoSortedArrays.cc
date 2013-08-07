@@ -5,6 +5,7 @@
 
 using namespace std;
 
+<<<<<<< HEAD
 class Solution
 {
 public:
@@ -24,6 +25,37 @@ public:
     int pb = k-pa;
     if (A[pa-1]<=B[pb-1]) return fms(A+pa,m-pa,B,n,k-pa);
     else return fms(A,m,B+pb,n-pb,k-pb);
+=======
+class Solution {
+public:
+  double findMedianSortedArrays(int A[], int m, int B[], int n)
+  {
+    int curIndexInA = m / 2;
+    int curIndexInB;
+    int left = 0,right = m-1;
+    while(left < right)
+    {
+      curIndexInB = ( m + n ) / 2 - curIndexInA;
+      if (curIndexInB >= 0 && curIndexInB < n )
+      {
+        if (B[curIndexInB] > A[curIndexInA])
+        {
+          left = left + (right - left) / 2 ;
+          curIndexInA = (right + left) / 2 ;
+        }
+        else if (B[curIndexInB+1] < A[curIndexInA])
+        {
+          right = right - (right - left) / 2;
+          curIndexInA = (right + left) / 2;
+        }
+        else
+        {
+          return A[curIndexInA];
+        }
+      }
+    }
+    return -1;
+>>>>>>> 5167c3c207b2f72035948d4069bc112b406cec59
   }
 };
 
