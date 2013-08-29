@@ -7,25 +7,48 @@
 
 using namespace std;
 
+const int C_SIZE = 256;
+
 class Solution {
- public:
+public:
   int lengthOfLongestSubstring(string s)
   {
     int length = s.length();
-    int *longest = new int[length];
+    int *maps = new int[C_SIZE];
+
+    int curLen = 0;
+    int curStart = 0;
+    int maxLen = 0;
+    int index = 0;
+
+    for(int i = 0 ; i < C_SIZE ; ++ i )
+    {
+      maps[i] = -1;
+    }
 
     for(int i = 0 ; i < length ; ++ i )
     {
-      longest[i] = 0;
+      index = s.at(i);
+
+      if (maps[index] > -1 && maps[index] >= curStart)
+      {
+        curLen = i - curStart;
+        maxLen = maxLen > curLen ? maxLen : curLen;
+        curStart = maps[index] + 1;
+      }
+      maps[index] = i;
     }
+    curLen = length - curStart;
+    maxLen = maxLen > curLen ? maxLen : curLen;
+    return maxLen;
   }
 };
 
 int main(int argc, char *argv[])
 {
-  int faslkdfjint;
-  faslkdfjint = 100;
-  cout<<"the value is " << faslkdfjint <<endl;
-  faslkdfjint = 2000;
+  Solution sol;
+  string s ;
+  cin>>s;
+  cout<<"the value is " << sol.lengthOfLongestSubstring(s)  <<endl;
   return 0;
 }
