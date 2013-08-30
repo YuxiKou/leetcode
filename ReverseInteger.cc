@@ -24,6 +24,7 @@ class Solution
   {
     int ret = 0;
     int isNegative = x < 0 ? -1 : 1;
+
     x *= isNegative;
     while(x > 0)
     {
