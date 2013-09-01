@@ -26,12 +26,16 @@
  */
 
 #include <iostream>
+#include <limits>
+
+const int min_int = std::numeric_limits<int>::min();
+const int max_int = std::numeric_limits<int>::max();
 
 class Solution {
  public:
   int atoi(const char *str)
   {
-    int ret = 0;
+    long long ret = 0;
     int i = 0;
     int signSet = 0;
     while( str[i] > 0 )
@@ -39,32 +43,23 @@ class Solution {
       std::cout<<"str[i]  ="<<str[i]<<std::endl;
       std::cout<<"signSet ="<<signSet<<std::endl;
       std::cout<<"ret     ="<<ret<<std::endl<<std::endl;
+      if ( signSet == 0 )
+      {
+        if ( str[i] == '-' || str[i] == '+' || str[i] == ' ')
+        {
+          if (str[i] == '-') signSet = -1;
+          else if (str[i] == '+') signSet = 1;
+          ++ i;
+          continue;
+        }
+      }
       if (str[i] >= '0' && str[i] <= '9')
       {
-        std::cout<<( INT_MIN - str[i] + '0' ) / 10<<std::endl;
-        std::cout<<( INT_MAX - str[i] + '0' ) / 10<<std::endl;
-        if ( ( signSet == -1 && - ret > INsT_MIN / 10 - ( str[i] - '0' ) / 10)
-             || (signSet == 1 && ret < INT_MAX / 10 - ( str[i] - '0') / 10)
-             || signSet == 0 )
-        {
-          ret = ret * 10;
-          ret += (str[i] - '0');
-          if (signSet == 0 ) signSet = 1;
-        }
-        else if (signSet == -1) return INT_MIN;
-        else return INT_MAX;
-      }
-      else if ( signSet == 0 )
-      {
-        if ( str[i] == '-' )
-        {
-          signSet = -1;
-        }
-        else if ( str[i] == '+' )
-        {
-          signSet = 1;
-        }
-        else if (ret != 0 || str[i] != ' ')  break;
+        if (signSet == 0 ) signSet = 1;
+        ret = ret * 10;
+        ret += (str[i] - '0');
+        if (signSet * ret > max_int) return max_int;
+        else if (signSet * ret < min_int) return min_int;
       }
       else break;
       ++ i;
