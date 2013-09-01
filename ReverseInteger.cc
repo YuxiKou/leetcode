@@ -14,8 +14,10 @@
   Throw an exception? Good, but what if throwing an exception is not an option? You would then have to re-design the function (ie, add an extra parameter).
 */
 #include <iostream>
+#include <limits>
 
-using namespace std;
+const int min_int = std::numeric_limits<int>::min();
+const int max_int = std::numeric_limits<int>::max();
 
 class Solution
 {
@@ -31,7 +33,7 @@ class Solution
       ret = ret * 10 + x % 10;
       x /= 10;
     }
-    if (x < 0) return -1;
+    if (ret < 0) return -1;
     return isNegative * ret;
   }
 };
@@ -39,5 +41,7 @@ class Solution
 int main()
 {
   Solution s;
-  cout<<s.reverse(-123123123)<<endl;
+  int val;
+  std::cin>>val;
+  std::cout<<val<<", "<<s.reverse(val)<<std::endl;
 }
