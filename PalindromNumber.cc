@@ -15,10 +15,6 @@
 */
 
 #include <iostream>
-#include <limits>
-
-const int max_int = std::numeric_limits<int>::max();
-const int min_int = std::numeric_limits<int>::min();
 
 class Solution {
  public:
