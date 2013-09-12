@@ -47,8 +47,8 @@ class Solution {
     int* count = new int[26]();
     for (std::string::size_type i = 0 ; i < s1.length() ; ++ i )
     {
-      ++ count[s1[i]-'0'];
-      -- count[s2[i]-'0'];
+      ++ count[s1[i]-'a'];
+      -- count[s2[i]-'a'];
     }
     for (std::string::size_type i = 0 ; i < s1.length() ; ++ i )
     {
@@ -64,13 +64,13 @@ class Solution {
     if (s1.length() != s2.length() ) return false;
     if (s1 == s2 ) return true;
     if (!charCount(s1, s2)) return false;
-    for (std::string::size_type i = 1 ; i < s1.length() ; ++ i )
+    for (std::string::size_type i = 1 ; i < s1.length(); ++ i )
     {
       s1Left = s1.substr(0,i);
       s2Left = s2.substr(0,i);
+      s1Right = s1.substr(i);
       if ( charCount(s1Left, s2Left) && isScramble(s1Left, s2Left))
       {
-        s1Right = s1.substr(i);
         s2Right = s2.substr(i);
         if ( isScramble(s1Right, s2Right) ) return true;
       }
@@ -88,5 +88,5 @@ class Solution {
 int main()
 {
   Solution sol;
-  std::cout<<sol.isScramble("ab","ba")<<std::endl;
+  std::cout<<sol.isScramble("ab", "ba")<<std::endl;
 }
