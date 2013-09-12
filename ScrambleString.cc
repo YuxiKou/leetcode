@@ -39,43 +39,34 @@
 
 #include <iostream>
 #include <string>
+#include <algorithm>
 
 class Solution {
  public:
-  bool charCount(std::string s1, std::string s2)
-  {
-    int* count = new int[26]();
-    for (std::string::size_type i = 0 ; i < s1.length() ; ++ i )
-    {
-      ++ count[s1[i]-'a'];
-      -- count[s2[i]-'a'];
-    }
-    for (std::string::size_type i = 0 ; i < s1.length() ; ++ i )
-    {
-      if (count[i] != 0 ) return false;
-    }
-    return true;
-  }
 
   bool isScramble(std::string s1, std::string s2)
   {
     std::string s1Left, s1Right;
     std::string s2Left, s2Right;
+    std::string s1Temp = s1;
+    std::string s2Temp = s2;
     if (s1.length() != s2.length() ) return false;
     if (s1 == s2 ) return true;
-    if (!charCount(s1, s2)) return false;
+    std::sort(s1Temp.begin(), s1Temp.end());
+    std::sort(s2Temp.begin(), s2Temp.end());
+    if (s1Temp != s2Temp) return false;
     for (std::string::size_type i = 1 ; i < s1.length(); ++ i )
     {
       s1Left = s1.substr(0,i);
       s2Left = s2.substr(0,i);
       s1Right = s1.substr(i);
-      if ( charCount(s1Left, s2Left) && isScramble(s1Left, s2Left))
+      if ( isScramble(s1Left, s2Left))
       {
         s2Right = s2.substr(i);
         if ( isScramble(s1Right, s2Right) ) return true;
       }
       s2Left = s2.substr(s2.length() - i);
-      if (charCount(s1Left, s2Left) && isScramble(s1Left, s2Left))
+      if ( isScramble(s1Left, s2Left))
       {
         s2Right = s2.substr(0, s2.length() - i) ;
         if (isScramble(s1Right, s2Right)) return true;
