@@ -33,6 +33,7 @@ class Solution
     ListNode *temp1 = new ListNode(0);
     ListNode *temp2;
     temp1->next = head;
+    head = temp1;
     while (temp1->next != NULL && temp1->next->next != NULL)
     {
       temp2 = temp1->next;
@@ -41,7 +42,7 @@ class Solution
       temp1->next->next = temp2;
       temp1 = temp2;
     }
-    return head;
+    return head->next;
   }
 };
 int main()
