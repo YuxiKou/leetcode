@@ -44,7 +44,7 @@ class Solution
   }
   int formatChar(const char c)
   {
-    if ( (c >= 'a' && c <= 'z' ) || (c >- 0 && c <= 9) )
+    if ( (c >= 'a' && c <= 'z' ) || (c >= '0' && c <= '9') )
     {
       return c;
     }
