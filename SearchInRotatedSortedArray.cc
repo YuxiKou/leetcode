@@ -17,21 +17,18 @@ class Solution
   }
   int searchPrvt(int A[], int start, int end, int target)
   {
-    if ( start <= end )
-    {
-      if ( A[start] == target ) return start;
-      return -1;
-    }
+    if ( start > end ) return -1;
     int mid = ( start + end ) / 2;
-    if ( A[mid] > A[start] )
+    if ( A[mid] == target ) return mid;
+    if ( A[mid] >= A[start] )
     {
-      if ( A[mid] > target && target > A[start] ) return searchPrvt(A, start, mid - 1, target);
+      if ( A[mid] > target && target >= A[start] ) return searchPrvt(A, start, mid - 1, target);
       else return searchPrvt(A, mid + 1, end, target);
     }
     else
     {
-      if ( A[mid] < target && target < A[end]) return searchPrvt(A, mid - 1, end, target);
-      else return searchPrvt(A, start, mid + 1, target);
+      if ( A[mid] < target && target <= A[end]) return searchPrvt(A, mid + 1, end, target);
+      else return searchPrvt(A, start, mid - 1, target);
     }
   }
 };
@@ -40,7 +37,7 @@ int main()
 {
   Solution sol;
   int ary[] = {1,3};
-  int target = 3;
+  int target = 0;
   std::cout<<sol.search(ary, sizeof(ary) / sizeof(int), target);
   return 0;
 }
