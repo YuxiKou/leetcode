@@ -18,7 +18,6 @@ class Solution {
   int numTrees(int n)
   {
     std::vector<int> count(n+1,0);
-    int sum;
     count[0] = 1;
     count[1] = 1;
     for (int i = 2 ; i < n + 1 ; ++ i)
@@ -27,7 +26,7 @@ class Solution {
       {
         count[i] += count[j] * count[i-j-1];
       }
-              
     }
+    return count[n];
   }
 };
