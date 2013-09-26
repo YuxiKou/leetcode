@@ -16,12 +16,14 @@ class Solution {
   int maxSubArray(int A[], int n)
   {
     int sum = 0;
-    int maxSum = 0;
+    int maxSum;
+    if (n == 0) return 0;
+    maxSum = A[0];
     for (int i = 0 ; i < n ; ++ i )
     {
       sum += A[i];
-      if (sum < 0 ) sum = 0;
       if (sum > maxSum) maxSum = sum;
+      if (sum < 0 ) sum = 0;
     }
     return maxSum;
   }
