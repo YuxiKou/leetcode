@@ -40,10 +40,6 @@ public:
         --b;
       }
     }
-    for( int i = 0 ; i < m+n-1 ; ++ i)
-    {
-      cout<<A[i]<<endl;
-    }
   }
 };
 
