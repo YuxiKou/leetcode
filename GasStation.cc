@@ -13,7 +13,8 @@
 using namespace std;
 class Solution {
  public:
-  int canCompleteCircuit(vector<int> &gas, vector<int> &cost) {
+  int canCompleteCircuit(vector<int> &gas, vector<int> &cost)
+  {
     int sum = 0;
     int total = 0;
     int j = -1;
