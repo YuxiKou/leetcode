@@ -42,7 +42,7 @@ class Solution {
     {
       curNode = TreeList.front();
       TreeList.pop();
-      if(ret.size() <= level) ret.push_back(temp);
+      if(static_cast<int>(ret.size()) <= level) ret.push_back(temp);
       ret[level].push_back(curNode->val);
       if(curNode->left != NULL) TreeList.push(curNode->left);
       if(curNode->right != NULL) TreeList.push(curNode->right);
