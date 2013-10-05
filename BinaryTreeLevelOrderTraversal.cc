@@ -30,7 +30,7 @@ class Solution {
  public:
   std::vector<std::vector<int> > levelOrder(TreeNode *root)
   {
-    //pre-order traversal + BFS
+    //pre-order traversal + BFS + iterate
     int level = 0, count = 1;
     std::queue<TreeNode *> TreeList;
     std::vector<std::vector<int> > ret;
@@ -53,5 +53,24 @@ class Solution {
       }
     }
     return ret;
+  }
+  std::vector<std::vector<int> > levelOrder2(TreeNode *root)
+  {
+    //pre-order traversal + recursion
+    std::vector<std::vector<int> > result;
+    levelOrder2Prvt(root, 1, result);
+    return result;
+  }
+  void levelOrder2Prvt(TreeNode *root, int level, std::vector<std::vector<int> > &result)
+  {
+    if(root == NULL) return;
+    if(level > static_cast<int>(result.size()))
+    {
+      std::vector<int> temp;
+      result.push_back(temp);
+    }
+    result[level-1].push_back(root->val);
+    levelOrder2Prvt(root->left, level+1, result);
+    levelOrder2Prvt(root->right, level+1, result);
   }
 };
