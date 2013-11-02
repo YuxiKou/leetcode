@@ -12,12 +12,13 @@ class Solution
     int one = 0, two = 0, three = 0;
     for(int i = 0 ; i < n ; ++ i)
     {
-      three = two & A[i];
-      two = (two & ~ A[i]) | (one & A[i]);
-      one = (one ^ A[i]) & ~two;
-      cout<<"A[i] = "<<A[i]<<", one = " <<one<<", two = "<<two<<", three = "<<three<<endl;
+      two |= one & A[i];
+      one ^= A[i];
+      three = one & two;
+      one &= ~three;
+      two &= ~three;
     }
-    return two;
+    return one;
   }
 };
 
