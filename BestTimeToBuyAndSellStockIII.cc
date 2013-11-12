@@ -19,12 +19,12 @@ class Solution
       if(prices[i] < min) min = prices[i];
       maxPrice[i] = std::max(maxPrice[i-1], prices[i] - min);
     }
-
+    ret = maxPrice[size-1];
     for(int i = size - 2; i >= 0; --i)
     {
-      if(prices[i] > max) max = prices[i];
-      int localMax = maxPrice[i] + std::max(maxPrice[i+1], max - prices[i]);
+      int localMax = maxPrice[i] + max - prices[i+1];
       if(localMax > ret) ret = localMax;
+      if(prices[i] > max) max = prices[i];
     }
     return ret;
   }
