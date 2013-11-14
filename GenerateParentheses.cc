@@ -29,13 +29,12 @@ class Solution
       return;
     }
     if(leftParent > rightParent) return;
-    else if(leftParent == rightParent)
+    if(leftParent <= rightParent)
     {
       generateParenthesisPrivate(allParent, prefix + '(', leftParent - 1, rightParent);
     }
-    else
+    if(leftParent < rightParent)
     {
-      generateParenthesisPrivate(allParent, prefix + '(', leftParent - 1, rightParent);
       generateParenthesisPrivate(allParent, prefix + ')', leftParent, rightParent - 1);
     }
   }
