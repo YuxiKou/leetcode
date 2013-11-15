@@ -9,6 +9,7 @@
   For k = 3, you should return: 3->2->1->4->5
 */
 #include <iostream>
+#include <stack>
 
 using namespace std;
 
@@ -42,9 +43,11 @@ class Solution
     if(k <= 1 || head == NULL) return head;
     ListNode *last = head->next;
     ListNode *newHead = reversePrvt(head->next, k - 1);
-    if(newHead == NULL) return NULL;
-    head->next = last->next;
-    last->next = head;
+    if(newHead != NULL)
+    {
+      head->next = last->next;
+      last->next = head;
+    }
     return newHead;
   }
 };
