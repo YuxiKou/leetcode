@@ -41,11 +41,7 @@ class Solution
       }
     }
     ret.push_back(newInterval);
-    while(i < intervals.size())
-    {
-      ret.push_back(intervals[i]);
-      ++i;
-    }
+    while(i < intervals.size()) ret.push_back(intervals[i++]);
     return ret;
   }
 };
