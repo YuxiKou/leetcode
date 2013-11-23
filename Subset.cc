@@ -33,7 +33,7 @@ class Solution
     if(n == 0) return ret;
     int size = pow(2, n);
     sort(S.begin(), S.end());
-    for(int i = 0; i < size; ++i)
+    for(int i = 0; i < size; ++i) //total size of the subsets
     {
       vector<int> oneSubset;
       int bits = i;
