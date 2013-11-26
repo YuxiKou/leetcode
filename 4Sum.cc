@@ -18,43 +18,49 @@ using namespace std;
 
 class Solution
 {
- private:
-  class Pair
-  {
-   public:
-    int _num1;
-    int _num2;
-    int _sum;
-    int _ind1;
-    int _ind2;
-    Pair(int num1, int num2, int ind1, int ind2)
-    {
-      _num1 = num1;
-      _num2 = num2;
-      _ind1 = ind1;
-      _ind2 = ind2;
-      _sum = num1 + num2;
-    }
-    bool operator<(Pair compareTo)
-    {
-      return _sum < compareTo._sum;
-    }
-  };
  public:
   vector<vector<int> > fourSum(vector<int> &num, int target)
   {
-    vector<Pair> pairs;
     vector<vector<int> > ret;
     int n = num.size();
-    if(n < 4) return ret;
-    for(int i = 0; i < n; ++ i)
+    sort(num.begin(), num.end());
+    for(int i = 0; i < n - 3; ++ i)
     {
-      for(int j = i + 1; j < n; ++ j)
+      for (int j = i + 1; j < n - 2; ++j)
       {
-        pairs.push_back(Pair(num[i], num[j], i, j));
+        int start = j + 1;
+        int end = n - 1;
+        int curTarget = target - num[i] - num[j];
+        while(start < end)
+        {
+          if(num[start] + num[end] < curTarget)
+          {
+            ++start;
+            while(start < end && num[start-1] == num[start]) ++start;
+          }
+          else if(num[start] + num[end] > curTarget)
+          {
+            --end;
+            while(start <end && num[end+1] == num[end]) --end;
+          }
+          else
+          {
+            vector<int> oneRes(4);
+            oneRes[0] = num[i];
+            oneRes[1] = num[j];
+            oneRes[2] = num[start];
+            oneRes[3] = num[end];
+            ret.push_back(oneRes);
+            ++start;
+            --end;
+            while(start < end && num[start-1] == num[start]) ++start;
+            while(start <end && num[end+1] == num[end]) --end;
+          }
+        }
+        while(j < n - 2 && num[j] == num[j+1]) ++j;
       }
+      while(i < n - 3 && num[i] == num[i+1]) ++i;
     }
-    std::sort(pairs.begin(), pairs.end());
     return ret;
   }
 };
