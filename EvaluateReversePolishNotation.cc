@@ -9,6 +9,7 @@
 #include <string>
 #include <stack>
 #include <limits>
+#include <iostream>
 
 using namespace std;
 
@@ -20,51 +21,39 @@ class Solution
  public:
   int evalRPN(vector<string> &tokens)
   {
-    int n = tokens.size();
-    if(n == 0) return 0;
     stack<int> operand;
-    for(int i = 0; i < n; ++ i)
+    for(int i = 0; i < (int)tokens.size(); ++ i)
     {
       string str = tokens[i];
       int left, right;
-      if(isOperand(str))
+      if(isOperator(str))
       {
         right = operand.top();
         operand.pop();
         left = operand.top();
         operand.pop();
-        switch(str[0])
-        {
-          case '+':
-            left += right;
-            break;
-          case '-':
-            left -= right;
-            break;
-          case '*':
-            left *= right;
-            break;
-          case '/':
-            left /= right;
-            break;
-        }
+        if(str[0] == '+') left += right;
+        else if(str[0] == '-') left -= right;
+        else if(str[0] == '*') left *= right;
+        else if(str[0] == '/') left /= right;
         operand.push(left);
       }
-      else if(isOperator(str))
+      else if(isOperand(str))
       {
         operand.push(atoi(str));
       }
       else return 0;
     }
-    return operand.top();
+    if(!operand.empty()) return operand.top();
+    else return 0;
   }
-  bool isOperand(string str)
+  bool isOperand(string &str)
   {
-    return (str[0] <= '9' && str[0] >= '0');
+    return (str.length() > 1 || (str[0] <= '9' && str[0] >= '0'));
   }
-  bool isOperator(string str)
+  bool isOperator(string &str)
   {
-    return (str[0] == '+' || str[0] == '-' || str[0] == '*' || str[0] == '/');
+    return (str.length() == 1 && (str[0] == '+' || str[0] == '-' || str[0] == '*' || str[0] == '/'));
   }
   int atoi(string str)
   {
@@ -97,3 +86,12 @@ class Solution
     return ret * signSet;
   }
 };
+int main()
+{
+  Solution sol;
+  vector<string> input;
+  input.push_back("18");
+  int result = sol.evalRPN(input);
+  cout<<result<<endl;
+  return 0;
+}
