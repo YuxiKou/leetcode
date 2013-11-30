@@ -19,7 +19,7 @@ using namespace std;
 class Solution
 {
  public:
-  vector<vector<int> > combinationSum(vector<int> &candidates, int target)
+  vector<vector<int> > combinationSum(vector<int> &candidates, int target) //recursion O(N^2)
   {
     sort(candidates.begin(), candidates.end());
     vector<vector<int> > result;
