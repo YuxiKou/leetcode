@@ -18,17 +18,12 @@ class Solution {
  public:
   bool canJump(int A[], int n)
   {
-    if ( n <= 0 ) return true;
-
-    int* jumpAry = new int[n]();
-    jumpAry[0] = A[0];
-    for (int i = 1 ; i < n ; ++ i )
+    int maxPos = 0;
+    for (int i = 0 ; i < n ; ++ i )
     {
-      if (jumpAry[i-1] == 0 ) return false;
-      if ( A[i] + i >= n - 1) return true;
-      jumpAry[i] = std::max(jumpAry[i-1] - 1, A[i]);
+      if(i <= maxPos && i + A[i] > maxPos) maxPos = i + A[i];
     }
-    return true;
+    return maxPos >= n - 1;
   }
 };
 
