@@ -15,17 +15,18 @@ class Solution
  public:
   int jump(int A[], int n)
   {
-    if ( n <= 0 ) return true;
-
-    int* jumpAry = new int[n]();
-    jumpAry[0] = A[0];
-    if(A[0] > n - 1) return 1;
-    for (int i = 1 ; i < n ; ++ i )
+    int lastStep = 0;
+    int curStep = 0;
+    int steps = 0;
+    for (int i = 0 ; i < n ; ++ i )
     {
-      if (jumpAry[i-1] == 0 ) return -1;
-      if ( A[i] + i >= n - 1) return i+1;
-      jumpAry[i] = max(jumpAry[i-1] - 1, A[i]);
+      if(i > lastStep)
+      {
+        lastStep = curStep;
+        ++steps;
+      }
+      if(curStep < A[i] + i) curStep = A[i] + i;
     }
-    return 0;
+    return steps;
   }
 };
