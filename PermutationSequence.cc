@@ -53,3 +53,9 @@ class Solution
     return ret;
   }
 };
+};
+int main()
+{
+  Solution sol;
+  cout<<sol.getPermutation(2, 1)<<endl;
+}
