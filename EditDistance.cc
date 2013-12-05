@@ -20,12 +20,8 @@ class Solution
     int n = word2.size();
     if(m == 0) return n;
     if(n == 0) return m;
-    vector<int> temp(n + 1, 5);
+    vector<int> temp(n + 1, 0);
     vector<vector<int> > dist(m + 1, temp);
-    cout<<dist.size()<<endl;
-    cout<<dist[0].size()<<endl;
-    cout<<dist[1].size()<<endl;
-    cout<<dist[1][1]<<endl;
     for(int i = 0; i < m + 1; ++ i)
     {
       for(int j = 0; j < n + 1; ++ j)
