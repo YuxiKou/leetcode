@@ -27,7 +27,7 @@ class Solution
     for(int i = 2; i < length + 1; ++i)
     {
       ways[i] = s[i-1] == '0' ? 0 : ways[i-1];
-      if((s[i-2] == 1) || (s[i-2] == 2 && s[i-1] < '7')) ways[i] += ways[i-2];
+      if((s[i-2] == '1') || (s[i-2] == '2' && s[i-1] < '7')) ways[i] += ways[i-2];
       if(ways[i] == 0) return 0;
     }
     return ways[length];
