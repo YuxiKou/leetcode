@@ -1,8 +1,6 @@
 /*
   Divide two integers without using multiplication, division and mod operator.
 */
-#include <iostream>
-
 class Solution
 {
  public:
@@ -27,11 +25,3 @@ class Solution
     return (dividend^divisor)>>31 ? -ret : ret;
   }
 };
-int main()
-{
-  Solution sol;
-  int a = -2147483648;
-  int b = 1;
-  std::cout<<sol.divide(a, b);
-  return 0;
-}
