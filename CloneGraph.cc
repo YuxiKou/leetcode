@@ -30,6 +30,7 @@ struct UndirectedGraphNode
   std::vector<UndirectedGraphNode *> neighbors;
   UndirectedGraphNode(int x) : label(x) {};
 };
+
 class Solution
 {
   std::map<int, UndirectedGraphNode *> nodeMap;
