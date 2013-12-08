@@ -42,7 +42,7 @@ class Solution
       {
         for(int k = 0; k < (int)rightTree->size(); ++ k)
         {
-          TreeNode *head = new TreeNode(i); //build root node
+          TreeNode *head = new TreeNode(i); //for every pair of left and right node, build root node
           head->left = (*leftTree)[j];
           head->right = (*rightTree)[k];
           ret->push_back(head);
