@@ -26,7 +26,7 @@ class Solution
   {
     return *gen(1, n);
   }
-  std::vector<TreeNode *>* gen(int start, int end)
+  std::vector<TreeNode *>* gen(int start, int end)//generates all trees that contains nodes from start to end
   {
     std::vector<TreeNode *> * ret = new std::vector<TreeNode *>();
     if(start > end)
