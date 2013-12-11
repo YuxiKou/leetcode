@@ -56,16 +56,3 @@ class Solution {
     return ret;
   }
 };
-int main()
-{
-  Solution sol;
-  vector<int> input;
-  vector<vector<int> > output;
-  input.push_back(-2);
-  input.push_back(0);
-  input.push_back(1);
-  input.push_back(1);
-  input.push_back(2);
-  output = sol.threeSum(input);
-  cout<<output.size()<<endl;
-}
