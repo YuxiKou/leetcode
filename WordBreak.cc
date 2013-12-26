@@ -12,8 +12,6 @@
   or
   2): there is a length k (1 <= k < j) such that both seg(i,k) and seg(i+k, j-k) are true.
   The entire string can be segmented if seg(0, n) is true.
-
-  Here I will change the meaning of seg array to seg(i, j) indicates whether substring t (starting at s[i] and ending at s[j]) ....
 */
 
 
