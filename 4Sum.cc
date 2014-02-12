@@ -64,8 +64,3 @@ class Solution
     return ret;
   }
 };
-int main()
-{
-  Solution sol;
-  return 0;
-}

@@ -24,12 +24,8 @@ class Solution {
     }
     if (allNine)
     {
-      vector<int> ret;
-      ret.push_back(1);
-      for( int i = 0 ; i < length ; ++ i)
-      {
-        ret.push_back(0);
-      }
+      vector<int> ret(length+1, 0);
+      ret[0] = 1;
       return ret;
     }
     else
