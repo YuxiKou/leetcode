@@ -14,7 +14,7 @@ class Solution
     if (n == 0) return -1;
     return searchPrvt(A, 0, n - 1, target);
   }
-  boll searchPrvt(int A[], int start, int end, int target)
+  bool searchPrvt(int A[], int start, int end, int target)
   {
     if ( start > end ) return false;
     int mid = ( start + end ) / 2;

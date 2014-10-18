@@ -3,6 +3,10 @@
   Design an algorithm to find the maximum profit. You may complete at most two transactions.
   You may not engage in multiple transactions at the same time (ie, you must sell the stock before you buy again).
 */
+#include <vector>
+
+using namespace std;
+
 class Solution
 {
  public:

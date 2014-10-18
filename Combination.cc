@@ -23,7 +23,7 @@ class Solution
     vector<vector<int> > ret;
     vector<int> curValues;
     buildCombination(n, k, 1, curValues, ret);
-    return result;
+    return ret;
   }
   void buildCombination(int n, int k, int curLevel, vector<int> &curValues, vector<vector<int> > &result)
   {
